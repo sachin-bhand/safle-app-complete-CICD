@@ -266,7 +266,7 @@ resource "aws_iam_role" "ecs_task_execution_role" {
 
 
 resource "aws_iam_role" "ecs_instance_role_1" {
-  name = "ecsInstanceRole02"
+  name = "ecsInstanceRole01"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
