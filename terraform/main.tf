@@ -510,9 +510,9 @@ EOF
 }
 
 resource "aws_autoscaling_group" "safle-asg" {
-  desired_capacity    = 0
+  desired_capacity    = 2
   max_size            = 5
-  min_size            = 0
+  min_size            = 2
   vpc_zone_identifier = [aws_subnet.private-subnet-1.id, aws_subnet.private-subnet-2.id]# List of subnet IDs
 
   launch_template {
@@ -572,7 +572,7 @@ resource "aws_ecs_service" "app_service" {
   name            = "my-ec2-service"
   cluster         = aws_ecs_cluster.safle-cluster.id
   task_definition = aws_ecs_task_definition.app_task.arn
-  desired_count   = 0
+  desired_count   = 2
 
   capacity_provider_strategy {
     capacity_provider = aws_ecs_capacity_provider.safle-capacity-provider-01.name
