@@ -534,7 +534,7 @@ resource "aws_autoscaling_group" "safle-asg" {
 
 
 
-resource "aws_ecs_capacity_provider" "safle-capacity-provider" {
+resource "aws_ecs_capacity_provider" "safle-capacity-provider-01" {
   name = "safle-capacity-provider-01"
 
   auto_scaling_group_provider {
@@ -550,7 +550,7 @@ resource "aws_ecs_capacity_provider" "safle-capacity-provider" {
   ]
 }
 
-resource "aws_ecs_cluster_capacity_providers" "safle" {
+resource "aws_ecs_cluster_capacity_providers" "safle-capacity-provider" {
   cluster_name = aws_ecs_cluster.safle-cluster.name
 
  capacity_providers = [
@@ -575,7 +575,7 @@ resource "aws_ecs_service" "app_service" {
   desired_count   = 0
 
   capacity_provider_strategy {
-    capacity_provider = aws_ecs_capacity_provider.safle.name
+    capacity_provider = aws_ecs_capacity_provider.safle-capacity-provider-01.name
     weight            = 1
     base              = 1
   }
