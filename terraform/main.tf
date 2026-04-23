@@ -458,7 +458,7 @@ resource "aws_lb_listener" "http" {
 }
 
 resource "aws_iam_instance_profile" "ecs_instance_profile" {
-  name = "ecs-instance-profile"
+  name = "ecs-instance-profile_new"
   role = aws_iam_role.ecs_instance_role_1.name
 }
 
